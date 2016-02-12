@@ -1,5 +1,6 @@
 class BreweriesController < ApplicationController
   before_action :set_brewery, only: [:show, :edit, :update, :destroy]
+   before_action :set_breweries_and_styles_for_template, only: [:new, :edit, :create]
   before_filter :authenticate, only: [:destroy]
 
   # GET /breweries
@@ -62,6 +63,11 @@ class BreweriesController < ApplicationController
     end
   end
 
+  def set_breweries_and_styles_for_template
+    @breweries = Brewery.all
+    @styles = ["Weizen", "Lager", "Pale ale", "IPA", "Porter"]
+  end
+
   private
 
     def authenticate
@@ -81,4 +87,5 @@ class BreweriesController < ApplicationController
     def brewery_params
       params.require(:brewery).permit(:name, :year)
     end
+
 end

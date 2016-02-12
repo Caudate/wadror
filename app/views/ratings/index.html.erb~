@@ -1,7 +1,6 @@
 <h2>List of ratings</h2>
 
 <ul>
-  <p>unknown rater</p>
 <% else %>
  <% @ratings.each do |rating| %>
    <% if not rating.user.nil? %> 
@@ -9,5 +8,7 @@
     <% end %>
 <% end %>
 </ul>
+
+<%= @ratings.size %> <%= "rating".pluralize(@ratings.size) %>
 
 <%= link_to 'New rating', new_rating_path %>

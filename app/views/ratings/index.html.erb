@@ -9,4 +9,6 @@
 <% end %>
 </ul>
 
+<p><%= @ratings.size %> <%= "rating".pluralize(@ratings.size) %></p>
+
 <%= link_to 'New rating', new_rating_path %>
