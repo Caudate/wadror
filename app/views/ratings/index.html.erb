@@ -1,14 +1,11 @@
 <h2>List of ratings</h2>
 
+<p>
+  Number of ratings <%= @ratings.count %>
+</p>
+
 <ul>
-<% else %>
- <% @ratings.each do |rating| %>
-   <% if not rating.user.nil? %> 
-    <li> <%= rating %> <%= link_to rating.user.username, rating.user %> </li>
-    <% end %>
-<% end %>
+  <% @ratings.each do |rating| %>
+    <li> <%= rating %> <%= link_to rating.user.username, rating.user %></li>
+  <% end %>
 </ul>
-
-<p><%= @ratings.size %> <%= "rating".pluralize(@ratings.size) %></p>
-
-<%= link_to 'New rating', new_rating_path %>
