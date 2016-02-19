@@ -13,7 +13,6 @@ class BeerClubsController < ApplicationController
   def show
     if current_user
       @membership = Membership.new(user_id: current_user.id, beer_club_id: @beer_club.id)
-      @membership.beer_club = @beer_club
     end
   end
 

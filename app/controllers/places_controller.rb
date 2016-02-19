@@ -1,4 +1,6 @@
-class PlacesController < ApplicationController
+class PlacesController < ApplicationController  
+  before_action :set_place, only: [:show]
+
   def index
   end
 
@@ -10,4 +12,9 @@ class PlacesController < ApplicationController
       render :index
     end
   end
+
+  def set_place
+    @place = Place.find(params[:id])
+  end
+
 end

@@ -70,7 +70,9 @@ group :test do
   gem 'launchy'
   gem 'rspec-its'
   gem 'simplecov', require: false
+  gem 'webmock'
 end
 
 ruby '2.3.0'
 gem 'bcrypt', '~> 3.1.7'
+gem 'httparty'

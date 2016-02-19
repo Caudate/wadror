@@ -35,6 +35,7 @@
       <%= f.submit value:"join the club" %>
     <% end %>
   <% else %>
+    <% byebug %>
     <%= form_for(@membership, method: "delete") do |f| %>
       <%= f.hidden_field :beer_club_id %>
       <%= f.submit value: "end the membership" %>
