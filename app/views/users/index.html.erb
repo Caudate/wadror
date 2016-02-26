@@ -9,8 +9,10 @@
           <%= link_to user.username, user %>
         </td>
         <td>
-          <%if user.suspended && current_user.admin%>
-            <p class="btn btn-danger">account frozen</p>
+          <%if current_user != nil %>
+            <%if user.suspended && current_user.admin%>
+              <p class="btn btn-danger">account frozen</p>
+            <%end%>
           <%end%>
         </td>
       </tr>
