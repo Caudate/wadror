@@ -64,6 +64,16 @@ class UsersController < ApplicationController
     end
   end
 
+
+  def toggle_activity
+    user = User.find(params[:id])
+    user.update_attribute :suspended, (not user.suspended)
+
+    new_status = user.suspended? ? "suspended" : "active"
+
+    redirect_to :back, notice:"user status changed to #{new_status}"
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user

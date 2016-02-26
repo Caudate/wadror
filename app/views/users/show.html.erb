@@ -1,7 +1,9 @@
-<p id="notice"><%= notice %></p>
 
 <h2>
   <%= @user.username %>
+  <% if @user.suspended %>
+    <p class="btn btn-danger">account frozen</p>
+  <% end %>
 </h2>
 
 <p>
@@ -9,7 +11,7 @@
 </p>
 
 <% if @user.ratings.any? %>
-  <p>Favorite style <%= @user.favorite_style %></p>
+  <p>Favorite style <%= @user.favorite_style.name %></p>
 
   <p>Favorite brewery <%= @user.favorite_brewery.name %></p>
 <% end %>
@@ -39,4 +41,12 @@
 <% if @user == current_user %>
   <%= link_to 'Delete account', @user, method: :delete, data: { confirm: 'Are you sure?' } %>
   <%= link_to 'Edit', edit_user_path(@user) %>
+<% end %>
+
+<% if current_user.admin %>  
+  <% if @user.suspended %>
+     <%= link_to "active account", toggle_activity_user_path(@user.id), method: :post, class: "btn btn-primary" %>
+  <% else %>
+    <%= link_to "freeze account", toggle_activity_user_path(@user.id), method: :post, class: "btn btn-primary" %>
+  <% end %>
 <% end %>

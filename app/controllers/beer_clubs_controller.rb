@@ -11,8 +11,10 @@ class BeerClubsController < ApplicationController
   # GET /beer_clubs/1
   # GET /beer_clubs/1.json
   def show
-    if current_user
-      @membership = Membership.new(user_id: current_user.id, beer_club_id: @beer_club.id)
+    if current_user and current_user.in? @beer_club.members
+      @membership = @beer_club.memberships.find{ |m| m.user = current_user}
+    else
+      @membership = Membership.new
       @membership.beer_club = @beer_club
     end
   end

@@ -73,6 +73,11 @@ group :test do
   gem 'webmock'
 end
 
+gem 'bootstrap-sass'
+group :development do
+  gem 'rails_layout'
+end
+
 ruby '2.3.0'
 gem 'bcrypt', '~> 3.1.7'
 gem 'httparty'
