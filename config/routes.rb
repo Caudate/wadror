@@ -9,6 +9,10 @@ Rails.application.routes.draw do
   get 'signin', to: 'sessions#new'
   delete 'signout', to: 'sessions#destroy'
 
+  get 'beerlist', to:'beers#list'
+  get 'ngbeerlist', to:'beers#nglist'
+  get 'brewerylist', to:'breweries#list'  
+
   resources :beers
   resources :breweries
   resources :ratings, only: [:index, :new, :create, :destroy]

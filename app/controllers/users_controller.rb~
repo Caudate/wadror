@@ -69,7 +69,7 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     user.update_attribute :suspended, (not user.suspended)
 
-    new_status = user.suspended? ? "active" : "suspended"
+    new_status = user.suspended? ? "suspended" : "active"
 
     redirect_to :back, notice:"user status changed to #{new_status}"
   end
